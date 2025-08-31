@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc -p tsconfig.json",
-    "dev": "tsx watch --env-file=../.env src/index.ts"
+    "dev": "lsof -ti :8090 | xargs kill -9 2>/dev/null || true && tsx watch --env-file=../.env src/index.ts"
   },
   "dependencies": {
     "@fastify/cors": "^8.5.0",

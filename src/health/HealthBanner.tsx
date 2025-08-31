@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
+import { checkMenuHealth } from './supabaseHealth';
 
 export default function HealthBanner() {
   const [ok, setOk] = useState<boolean | null>(null);
 
   useEffect(() => {
-    fetch('/api/health/db')
-      .then((r) => r.json())
-      .then((j) => setOk(!!j.ok))
+    checkMenuHealth()
+      .then(setOk)
       .catch(() => setOk(false));
   }, []);
 
@@ -18,7 +18,7 @@ export default function HealthBanner() {
       background: ok ? '#e7f7ee' : '#fdecea',
       color: ok ? '#0a6b3d' : '#b71c1c'
     }}>
-      Supabase migrations: {ok ? 'OK' : 'FAILED (menu_items not accessible)'}
+      Database health: {ok ? 'OK' : 'FAILED (check server connection)'}
     </div>
   );
 }
