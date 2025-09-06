@@ -7,6 +7,7 @@
     "check:env": "node scripts/checkEnv.mjs dotenv_config_path=.env",
     "dev": "lsof -ti :8090 | xargs kill -9 2>/dev/null || true && tsx watch --env-file=.env server/src/index.ts",
     "dev:ui": "vite --host 0.0.0.0 --port 5173",
+    "dev:ui": "vite --host 0.0.0.0 --port 5173",
     "dev:server": "cd server && npm run dev",
     "build": "tsc && vite build",
     "preview": "vite preview",
